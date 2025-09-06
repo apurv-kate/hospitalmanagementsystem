@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONTACT US</title>
+  <link rel="stylesheet" href="style7.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <header class="Header">
+    <a href="#" class="logo">🏥 HealthCare Plus</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="patients.html">Patients</a>
+      <a href="doctors.html">Doctors</a>
+      <a href="appointments.html">Appointments</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <section class="contact-heading">
+    <h1>Contact <span>Us</span></h1>
+    <p>We’re here to assist you with appointments, inquiries, and support.</p>
+  </section>
+
+  <div class="contact-box">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Enter your Name" required>
+      <input type="text" id="whatsapp" placeholder="Enter your WhatsApp No." required>
+      <input type="email" id="email" placeholder="Enter your Email ID" required>
+      <button id="submitBtn" type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script src="cont.js"></script>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <ul class="footer-links">
+        <li><a href="#" onclick="openTermsPopup(event)">Terms & Conditions</a></li>
+        <li><a href="#" onclick="openPrivacyPopup(event)">Privacy Policy</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+
+      <div class="app-buttons">
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play"></a>
+        <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store"></a>
+      </div>
+    </div>
+
+    <div class="popup" id="privacyPopup">
+      <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <h2>Privacy Policy</h2>
+        <p>
+          We respect your privacy. All personal details you provide on this website 
+          will only be used for appointment booking and patient management purposes. 
+          We do not share your data with third parties without consent.
+        </p>
+        <label>
+          <input type="checkbox" id="privacyCheck" onchange="checkAcceptance()"> I agree to the Privacy Policy
+        </label>
+        <button class="accept-btn" id="acceptBtn" onclick="closePopup()" disabled>Accept</button>
+      </div>
+    </div>
+
+    <div class="popup" id="termsPopup">
+      <div class="popup-content">
+        <span class="close-btn" onclick="closeTermsPopup()">&times;</span>
+        <h2>Terms & Conditions</h2>
+        <p>
+          By using this website, you agree to comply with all applicable laws and regulations. 
+          You are responsible for providing accurate information when booking appointments. 
+          Unauthorized use of the website is prohibited.
+        </p>
+        <label>
+          <input type="checkbox" id="termsCheck" onchange="checkTermsAcceptance()"> I agree to the Terms & Conditions
+        </label>
+        <button class="accept-btn" id="termsAcceptBtn" onclick="closeTermsPopup()" disabled>Accept</button>
+      </div>
+    </div>
+
+    <div class="footer-content">
+      <p>&copy; 2025 HealthCare Plus. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,307 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f9f9f9fc;
+  color: #080808ff;
+  cursor: pointer;
+}
+
+.Header {
+  position: fixed;
+  background-image: linear-gradient(to right, #c7e4f5ff, #62bcf3ff);
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+.logo {
+  font-size: 26px;
+  color: #080808ff;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav a {
+  font-size: 18px;
+  color: #000000ff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 35px;
+  transition: 0.3s;
+}
+
+.nav a:hover, .nav a.active {
+  color: hsla(0, 96%, 53%, 1.00);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.38);
+  scale: 1.1;
+}
+
+.guidance-box {
+  background: #ffffff;
+  border: 1px solid #e3f2fd;
+  border-left: 6px solid #0077b6;
+  padding: 16px 20px;
+  margin: 95px auto;
+  border-radius: 10px;
+  max-width: 750px;
+  box-shadow: 0 3px 10px rgba(0, 119, 182, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.guidance-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 119, 182, 0.2);
+}
+
+.guidance-box h3 {
+  margin: 0 0 10px;
+  color: #0077b6;
+  font-size: 19px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e6f4fa;
+  padding-bottom: 6px;
+}
+
+.guidance-box h3::before {
+  content: "📘 ";
+  margin-right: 6px;
+}
+
+.guidance-box ul {
+  padding-left: 18px;
+  margin: 0;
+  list-style: none;
+}
+
+.guidance-box li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.5;
+  position: relative;
+}
+
+.guidance-box li::before {
+  content: "✔";
+  color: #0077b6;
+  font-weight: bold;
+  position: absolute;
+  left: -18px;
+}
+
+#appointments {
+  max-width: 1100px;
+  margin: 40px auto 50px;
+  padding: 20px;
+  text-align: center;
+}
+
+#appointments h2 {
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #080808ff;
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #71b9e675;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  background: #f5f7f8ff;
+  border: 1px solid #223158;
+  border-radius: 10px;
+  color: #080808ff;
+  transition: all 0.25s ease;
+  font-size: 16px;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #4dd4ac;
+  box-shadow: 0 0 6px rgba(77, 212, 172, 0.4);
+}
+
+button {
+  align-self: center;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  background: #4dd4ac;
+  color: #091224;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+  width: 50%;
+  max-width: 200px;
+}
+
+button:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 4px 12px rgba(77, 212, 172, 0.5);
+}
+
+#appointmentsTable {
+  max-width: 900px;
+  width: 100%;
+  margin: 30px auto 0;
+  border-collapse: collapse;
+  background: #71b9e675;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #1b2a4b;
+  text-align: left;
+}
+
+th {
+  background: #142445;
+  color: #4dd4ac;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+tr:hover {
+  background: #71b9e6a0;
+  transform: scale(1.01);
+  transition: 0.2s;
+}
+
+.popup-message {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #0a74da;
+  color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  z-index: 1000;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -60%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 10%;
+  background: linear-gradient(to right, #c7e4f5ff, #62bcf3ff);
+  text-align: center;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .Header {
+    flex-direction: column;
+    padding: 15px 5%;
+    gap: 10px;
+  }
+
+  .nav a {
+    margin-left: 15px;
+    font-size: 16px;
+  }
+
+  .guidance-box {
+    max-width: 95%;
+    margin: 90px auto 20px;
+    padding: 14px 16px;
+  }
+
+  .guidance-box h3 {
+    font-size: 17px;
+  }
+
+  .guidance-box li {
+    font-size: 13px;
+    left: -16px;
+  }
+
+  #appointments {
+    padding: 15px;
+  }
+
+  #appointments h2 {
+    font-size: 24px;
+  }
+
+  .form-grid {
+    padding: 18px;
+    gap: 12px;
+    max-width: 95%;
+  }
+
+  input, select, textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  button {
+    width: 80%;
+    max-width: none;
+    padding: 10px 18px;
+    font-size: 15px;
+  }
+
+  #appointmentsTable {
+    font-size: 14px;
+    overflow-x: auto;
+    display: block;
+    width: 100%;
+  }
+
+  th, td {
+    padding: 10px;
+  }
+
+  .popup-message {
+    width: 90%;
+    font-size: 16px;
+    padding: 15px 20px;
+  }
+
+  .footer {
+    padding: 15px 5%;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOCTOR'S DETAILS</title>
+  <link rel="stylesheet" href="style4.css">
+</head>
+
+<body>
+
+  <header class="Header">
+    <a href="#" class="logo">🏥 HealthCare Plus</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="patients.html">Patients</a>
+      <a href="doctors.html" class="active">Doctors</a>
+      <a href="appointments.html">Appointments</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+<div class="subheading" style="text-align:center;">
+  <h2>Meet Our Experienced Specialists</h2>
+</div>
+
+<div class="summary">
+  <p>
+    Doctors dedicate their lives to healing, guiding, and supporting patients with compassion and care. 
+    Through years of training and experience, they combine knowledge with empathy to improve health and 
+    bring comfort. Their commitment and sacrifices make them true pillars of our society.
+  </p>
+</div>
+
+<h2>Find Your Doctor</h2>
+<div style="text-align:center;">
+  <select id="symptom">
+    <option value="">-- Select your problem --</option>
+    <optgroup label="General">
+      <option>fever</option><option>cold</option><option>cough</option><option>weakness</option>
+    </optgroup>
+    <optgroup label="Stomach">
+      <option>stomach pain</option><option>gastric</option><option>vomit</option><option>diarrhea</option>
+    </optgroup>
+    <optgroup label="Head / Brain">
+      <option>headache</option><option>migraine</option><option>dizzy</option>
+    </optgroup>
+    <optgroup label="Skin">
+      <option>skin rash</option><option>allergy</option><option>acne</option>
+    </optgroup>
+    <optgroup label="Eyes / Ears / Nose / Throat">
+      <option>eye pain</option><option>vision problem</option><option>red eye</option>
+      <option>ear pain</option><option>sinus</option><option>throat pain</option>
+    </optgroup>
+    <optgroup label="Teeth">
+      <option>tooth pain</option><option>cavity</option><option>gum pain</option>
+    </optgroup>
+    <optgroup label="Heart">
+      <option>chest pain</option><option>high bp</option>
+    </optgroup>
+    <optgroup label="Bones / Joints">
+      <option>back pain</option><option>knee pain</option><option>fracture</option>
+    </optgroup>
+    <optgroup label="Women Health">
+      <option>pregnancy</option><option>periods</option><option>ivf</option>
+    </optgroup>
+    <optgroup label="Others">
+      <option>urine infection</option><option>kidney stones</option>
+      <option>stress</option><option>anxiety</option><option>depression</option>
+      <option>child fever</option><option>baby cough</option>
+    </optgroup>
+  </select>
+  <button id="searchBtn">Search</button>
+</div>
+
+<div id="result" class="result"></div>
+<div id="popupContainer"></div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 HealthCare Plus. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+
+const doctors = {
+  "Dr. Vidhe Sharma": {img:"d1.png", sp:"Consultant Physician", exp:"25 Years", age:"50", desc:"Expert in chronic illness & holistic care."},
+  "Dr. Smitha Chouta": {img:"d2.png", sp:"Consultant ENT & Surgeon", exp:"12 Years", age:"39", desc:"Specialist in ENT and head-neck surgeries."},
+  "Dr. Jayesh Patil": {img:"d3.png", sp:"Ophthalmologist & Surgeon", exp:"14 Years", age:"42", desc:"Eye care incl. cataract, LASIK, retina."},
+  "Dr. Pooja Pathak": {img:"d4.png", sp:"Pathologist", exp:"8 Years", age:"29", desc:"Diagnostic pathology & accurate reporting."},
+  "Dr. Kedar Kulkarni": {img:"d5.png", sp:"Cardiologist", exp:"14 Years", age:"45", desc:"Heart diseases & interventional cardiology."},
+  "Dr. Mayuri Patil": {img:"d6.png", sp:"Ophthalmologist", exp:"9 Years", age:"31", desc:"Advanced eye treatments & vision correction."},
+  "Dr. V K Sathiyanarayan": {img:"d7.png", sp:"Chief Medical Physicist", exp:"20 Years", age:"49", desc:"Expert in medical physics & radiation safety."},
+  "Dr. Sunita Tandulwadkar": {img:"d8.png", sp:"OBGYN & IVF Specialist", exp:"7 Years", age:"28", desc:"Pioneer in IVF & reproductive medicine."},
+  "Dr. Sanket Bankar": {img:"d9.png", sp:"Neuro-Radiologist", exp:"11 Years", age:"40", desc:"Brain & spine procedures using imaging."},
+  "Dr. Rashmi Bhamare": {img:"d11.png", sp:"OBGYN & Fertility Specialist", exp:"9 Years", age:"35", desc:"Women's health & laparoscopic surgeries."},
+  "Dr. Shirish Yande": {img:"d10.png", sp:"Chief Urologist", exp:"18 Years", age:"46", desc:"Kidney stone management & prostate surgery."},
+  "Dr. Swapneel Karne": {img:"d12.png", sp:"Orthopaedic Surgeon", exp:"10 Years", age:"42", desc:"Trauma, joint replacement & sports injuries."}
+};
+
+const catalog=[
+ {sp:"General Physician",docs:["Dr. Vidhe Sharma"],kw:["fever","cold","cough","weakness"]},
+ {sp:"Gastroenterologist",docs:["Dr. Pooja Pathak"],kw:["stomach pain","gastric","vomit","diarrhea"]},
+ {sp:"Neurologist",docs:["Dr. Sanket Bankar"],kw:["headache","migraine","dizzy"]},
+ {sp:"Dermatologist",docs:["Dr. Pooja Pathak"],kw:["skin rash","allergy","acne"]},
+ {sp:"Ophthalmologist",docs:["Dr. Jayesh Patil","Dr. Mayuri Patil"],kw:["eye pain","vision problem","red eye"]},
+ {sp:"Dentist",docs:["Dr. Ramesh Iyer"],kw:["tooth pain","cavity","gum pain"]},
+ {sp:"Cardiologist",docs:["Dr. Kedar Kulkarni"],kw:["chest pain","bp"]},
+ {sp:"Orthopaedic",docs:["Dr. Swapneel Karne"],kw:["joint","knee pain","back pain","fracture"]},
+ {sp:"ENT Specialist",docs:["Dr. Smitha Chouta"],kw:["ear pain","nose","throat pain","sinus"]},
+ {sp:"OBGYN / Fertility",docs:["Dr. Sunita Tandulwadkar","Dr. Rashmi Bhamare"],kw:["pregnancy","ivf","periods"]},
+ {sp:"Urologist",docs:["Dr. Shirish Yande"],kw:["urine","kidney","stones","bladder"]},
+ {sp:"Psychiatrist",docs:["Dr. Meenal Shah"],kw:["stress","anxiety","depression"]},
+ {sp:"Pediatrician",docs:["Dr. Priya Nair"],kw:["child","baby","infant","child fever","baby cough"]}
+];
+
+function search(){
+ let val=symptom.value.toLowerCase().trim();
+ let matches=catalog.filter(c=>c.kw.some(k=>val.includes(k)));
+ result.innerHTML="";
+ popupContainer.innerHTML="";
+ if(!matches.length){
+   result.innerHTML=`<p style="color:red;">❌ No doctor found for "<b>${val}</b>"</p>`;
+   return;
+ }
+ matches.forEach(m=>{
+   m.docs.forEach(doc=>{
+     if(!doctors[doc]) return;
+     let d=doctors[doc];
+     
+     result.innerHTML+=`
+       <div class="doctor-card" onclick="openPopup('${doc.replace(/ /g,'_')}')">
+         <img src="${d.img}" class="doctor-img">
+         <div class="doctor-info">
+           <h3>${doc}</h3>
+           <p class="speciality">${d.sp}</p>
+           <a href="appointments.html?doctor=${encodeURIComponent(doc)}" class="btn">Book Appointment</a>
+         </div>
+       </div>`;
+     
+     popupContainer.innerHTML+=`
+       <div id="${doc.replace(/ /g,'_')}" class="popup" onclick="closePopup(event,'${doc.replace(/ /g,'_')}')">
+         <div class="popup-content">
+           <h2>${doc}</h2>
+           <p><strong>Specialization:</strong> ${d.sp}</p>
+           <p>${d.desc}</p>
+           <p><strong>Experience:</strong> ${d.exp}</p>
+           <p><strong>Age:</strong> ${d.age}</p>
+         </div>
+       </div>`;
+   });
+ });
+}
+
+function openPopup(id){document.getElementById(id).style.display="flex";}
+function closePopup(e,id){if(e.target.classList.contains("popup"))document.getElementById(id).style.display="none";}
+
+searchBtn.onclick=e=>{e.preventDefault();search();};
+</script>
+
+</body>
+</html>  

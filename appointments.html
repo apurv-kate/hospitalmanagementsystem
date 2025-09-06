@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APPOINTMENT</title>
+    <link rel="stylesheet" href="style5.css">
+</head>
+
+<body>
+
+  <header class="Header">
+    <a href="#" class="logo">🏥 HealthCare Plus</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="patients.html">Patients</a>
+      <a href="doctors.html">Doctors</a>
+      <a href="appointments.html" class="active">Appointments</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+
+ 
+<div class="guidance-box">
+  <h3>📌 Appointment Guidance</h3>
+  <ul>
+    <li>📝 Fill in <b>Patient Name</b>, <b>Doctor Name</b>, and <b>Date & Time</b> before submitting.</li>
+    <li>💡 Add any important <b>Notes</b> (e.g., symptoms, previous reports).</li>
+    <li>📋 Your booking will appear in the table below instantly.</li>
+    <li>🗑️ To <b>delete</b> an appointment, <b>double-click</b> on its row in the table.</li>
+    <li>💾 All appointments are saved locally and remain even after page reload.</li>
+  </ul>
+</div>
+
+  
+  <section id="appointments" class="view">
+    <h2>Appointments</h2>
+    <form id="appointmentForm" class="form-grid">
+      <input name="patient" placeholder="Patient Name" required />
+      <input id="doctorInput" name="doctor" placeholder="Doctor Name" required />
+      <input type="datetime-local" name="time" required/>
+      <input name="notes" placeholder="Notes"/>
+      <button type="submit">Create Appointment</button>
+    </form>
+
+    <div id="thankPopup" class="popup-message">
+  <p>✅ Thank you for booking your appointment!</p>
+</div>
+
+    <table id="appointmentsTable">
+      <thead>
+        <tr>
+          <th>ID</th><th>Patient</th><th>Doctor</th><th>Time</th><th>Notes</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 HealthCare Plus. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+
+let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+let appointmentsCount = localStorage.getItem("appointmentsCount") || 0;
+
+const form = document.getElementById("appointmentForm");
+const tableBody = document.querySelector("#appointmentsTable tbody");
+
+function loadAppointments() {
+  tableBody.innerHTML = "";
+  appointments.forEach((appt, index) => {
+    let row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${appt.patient}</td>
+      <td>${appt.doctor}</td>
+      <td>${appt.time}</td>
+      <td>${appt.notes}</td>
+    `;
+    row.addEventListener("dblclick", () => {
+      if (confirm(`Delete appointment for ${appt.patient}?`)) {
+        deleteAppointment(index);
+      }
+    });
+    tableBody.appendChild(row);
+  });
+}
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+  const newAppt = {
+    patient: form.patient.value,
+    doctor: form.doctor.value,
+    time: form.time.value,
+    notes: form.notes.value
+  };
+  appointments.push(newAppt);
+  localStorage.setItem("appointments", JSON.stringify(appointments));
+  appointmentsCount++;
+  localStorage.setItem("appointmentsCount", appointmentsCount);
+  loadAppointments();
+  form.reset();
+});
+
+function deleteAppointment(index) {
+  appointments.splice(index, 1);
+  localStorage.setItem("appointments", JSON.stringify(appointments));
+  appointmentsCount = appointments.length;
+  localStorage.setItem("appointmentsCount", appointmentsCount);
+  loadAppointments();
+}
+
+loadAppointments();
+
+function getParam(key) {
+  const u = new URL(window.location.href);
+  return u.searchParams.get(key);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('doctorInput') || document.querySelector('input[name="doctor"]');
+  if (!input) return;
+  const fromUrl = getParam('doctor');
+  const fromStorage = localStorage.getItem('selectedDoctor');
+  const value = fromUrl || fromStorage || '';
+  if (value) {
+    input.value = value;
+    input.readOnly = true;
+    try { localStorage.removeItem('selectedDoctor'); } catch(e) {}
+  }
+});
+
+document.querySelectorAll("form").forEach(form => {
+  form.addEventListener("submit", function(e) {
+    e.preventDefault(); 
+    let popup = document.getElementById("thankPopup");
+    
+    if(form.id === "patientForm") {
+      popup.innerHTML = "<p>✅ Thank you for visiting and adding your information!</p>";
+    } else if(form.id === "appointmentForm") {
+      popup.innerHTML = "<p>✅ Thank you for booking your appointment!</p>";
+    }
+    popup.style.display = "block";
+    
+    setTimeout(() => {
+      popup.style.display = "none";
+    }, 3000);
+  });
+});
+
+
+</script>
+
+</body>
+</html>

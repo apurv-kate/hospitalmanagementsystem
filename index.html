@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Management System</title>
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+  <header class="Header">
+    <a href="#" class="logo">🏥 HealthCare Plus</a>
+    <nav class="nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="patients.html">Patients</a>
+      <a href="doctors.html">Doctors</a>
+      <a href="appointments.html">Appointments</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section id="home" class="view">
+    <div class="hero">
+      <h1>Your Health, Our Priority</h1>
+      <p>Modern hospital management made simple — register patients and book appointments.</p>
+      <a href="appointments.html" target="_blank">
+        <button id="ctaBtn">Book an Appointment</button>
+      </a>
+    </div>
+    <div class="grid stats">
+      <div class="card"><h3 id="statPatients">0</h3><p>Patients</p></div>
+      <div class="card"><h3 id="statAppointments">0</h3><p>Appointments</p></div>
+    </div>
+  </section>
+
+  <section class="intro-section">
+    <div class="intro-text">
+      <h1>Where care goes <br> beyond Healthcare</h1>
+      <p>Welcome to HealthCare Plus. A pioneer in healthcare, committed to those who seek care.  
+      What started as a small clinic is now a nationally accredited multi-speciality hospital.  
+      Book your appointment today.</p>
+      <a href="doctors.html" class="btn">Find A Doctor</a>
+    </div>
+    <div class="intro-image"></div>
+  </section>
+
+  <main> 
+    <div class="or"><h1>Our Specialties</h1></div>
+    <div class="grid-container">
+
+      <div class="card-large" onclick="openPopup('popup1')">
+        <img src="cosmetic.svg" alt="Cosmetic"><p>Cosmetic & Plastic Surgery</p>
+      </div>
+
+      <div class="card-large" onclick="openPopup('popup2')">
+        <img src="bariat.svg" alt="Bariatric"><p>Bariatric & Metabolic Surgery</p>
+      </div>
+
+      <div class="card-large" onclick="openPopup('popup3')">
+        <img src="fetalmedicine.svg" alt="Fetal"><p>Fetal Medicine</p>
+      </div>
+
+      <div class="card-large" onclick="openPopup('popup4')">
+        <img src="breastSurgery.svg" alt="Breast"><p>Breast Surgery</p>
+      </div>
+
+      <div class="card-large" onclick="openPopup('popup5')">
+        <img src="cancerService.svg" alt="Cancer"><p>Cancer Services</p>
+      </div>
+
+      <div class="card-large" onclick="openPopup('popup6')">
+        <img src="gastroeDisorder.svg" alt="GastroeDisorder"><p>Gastroesophageal Disorder</p>
+      </div>
+
+      <div class="card-large" onclick="openPopup('popup7')">
+        <img src="cardiacscienc.svg" alt="Cardiac"><p>Cardiac Sciences & CCU</p>
+      </div>
+
+      <div class="card-large" onclick="openPopup('popup8')">
+        <img src="Gastroenterology.svg" alt="Gastro"><p>Gastroenterology</p>
+      </div>
+    </div>
+
+    <div id="popup1" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup('popup1')">×</span>
+        <h2>Cosmetic & Plastic Surgery</h2>
+        <p>Cosmetic & Plastic Surgery focuses on enhancing appearance and restoring function. It includes aesthetic procedures like facelifts, liposuction, and rhinoplasty, as well as reconstructive surgeries for burns, injuries, or birth defects. Our expert surgeons ensure safe care with natural-looking results.</p>
+      </div>
+    </div>
+
+    <div id="popup2" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup('popup2')">×</span>
+        <h2>Bariatric & Metabolic Surgery</h2>
+        <p>Bariatric & Metabolic Surgery focuses on weight loss and metabolic health. It includes procedures like gastric bypass, sleeve gastrectomy, and adjustable gastric banding. Our experienced team provides comprehensive care for patients seeking sustainable weight loss solutions.</p>
+      </div>
+    </div>
+
+    <div id="popup3" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup('popup3')">×</span>
+        <h2>Fetal Medicine</h2>
+        <p>Fetal Medicine specializes in the diagnosis and treatment of fetal conditions. It includes advanced imaging techniques, prenatal interventions, and collaboration with pediatric specialists. Our goal is to ensure the best possible outcomes for both mother and baby.</p>
+      </div>
+    </div>
+
+    <div id="popup4" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup('popup4')">×</span>
+        <h2>Breast Surgery</h2>
+        <p>Breast Surgery encompasses a range of procedures aimed at addressing various breast conditions. It includes breast augmentation, reduction, and reconstruction, as well as treatments for breast cancer. Our skilled surgeons prioritize patient safety and aesthetic outcomes.</p>
+      </div>
+    </div>
+
+    <div id="popup5" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup('popup5')">×</span>
+        <h2>Cancer Services</h2>
+        <p>Cancer Services provide comprehensive care for patients with cancer. It includes early detection, advanced treatment options, and supportive care throughout the cancer journey. Our multidisciplinary team is dedicated to improving patient outcomes and quality of life.</p>
+      </div>
+    </div>
+
+    <div id="popup6" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup('popup6')">×</span>
+        <h2>Gastroesophageal Disorder</h2>
+        <p>Gastroesophageal Disorder focuses on conditions affecting the esophagus and stomach. It includes diagnosis and treatment of GERD, hiatal hernias, and other related disorders. Our specialists use advanced techniques to provide effective care and improve patient comfort.</p>
+      </div>
+    </div>
+
+    <div id="popup7" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup('popup7')">×</span>
+        <h2>Cardiac Sciences & CCU</h2>
+        <p>Cardiac Sciences & CCU focuses on the diagnosis and treatment of heart conditions.</p>
+      </div>
+    </div>
+
+    <div id="popup8" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup('popup8')">×</span>
+        <h2>Gastroenterology</h2>
+        <p>Gastroenterology specializes in the diagnosis and treatment of digestive system disorders. It includes conditions like acid reflux, ulcers, and inflammatory bowel disease. Our team provides comprehensive care using advanced diagnostic and therapeutic techniques.</p>
+      </div>
+    </div>
+  </main>
+
+  <div class="tips-wrapper">
+    <div class="tips-container">
+      <div class="tip slide-left">🚑 <span>Call 108 immediately in case of emergency</span></div>
+      <div class="tip slide-left">❤️ <span>Learn basic CPR for cardiac arrest situations</span></div>
+      <div class="tip slide-left">🩸 <span>Donate blood regularly to save lives</span></div>
+      <div class="tip slide-left">💊 <span>Keep essential medicines at home</span></div>
+      <div class="tip slide-left">🧯 <span>Know fire and disaster exit points in hospitals</span></div>
+      <div class="tip slide-left">🧼 <span>Wash your hands before visiting patients</span></div>
+      <div class="tip slide-left">😷 <span>Always wear a mask inside hospital premises</span></div>
+      <div class="tip slide-left">🪑 <span>Offer priority seating for elderly and disabled</span></div>
+      <div class="tip slide-left">📋 <span>Keep your medical history handy for doctors</span></div>
+      <div class="tip slide-left">📞 <span>Save hospital emergency numbers in your phone</span></div>
+      <div class="tip slide-left">🥦 <span>Eat green vegetables daily for good health</span></div>
+      <div class="tip slide-left">💧 <span>Drink 8 glasses of water every day</span></div>
+      <div class="tip slide-left">🏃 <span>Exercise at least 30 minutes daily</span></div>
+      <div class="tip slide-left">🛏️ <span>Get 7–8 hours of quality sleep</span></div>
+      <div class="tip slide-left">☀️ <span>Get morning sunlight for Vitamin D</span></div>
+      <div class="tip slide-left">🧘 <span>Practice meditation to reduce stress</span></div>
+      <div class="tip slide-left">🚭 <span>Avoid smoking and alcohol for better health</span></div>
+      <div class="tip slide-left">🍽️ <span>Eat small, balanced meals instead of overeating</span></div>
+      <div class="tip slide-left">🩺 <span>Go for regular health check-ups</span></div>
+      <div class="tip slide-left">😊 <span>Keep a positive attitude for mental wellness</span></div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/hospital-room.png" alt="logo" class="logo">
+    <span class="info-text" id="infoText">📍 Address: FC Road, Pune</span>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 HealthCare Plus. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    let patientsCount = localStorage.getItem("patientsCount") || 0;
+    let appointmentsCount = localStorage.getItem("appointmentsCount") || 0;
+    document.getElementById("statPatients").textContent = patientsCount;
+    document.getElementById("statAppointments").textContent = appointmentsCount;
+
+    function openPopup(id) {
+      let popup = document.getElementById(id);
+      popup.style.display = "flex";
+      setTimeout(() => popup.style.display = "none", 15000);
+    }
+
+    function closePopup(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    window.onclick = e => {
+      document.querySelectorAll(".popup").forEach(p => {
+        if (e.target === p) p.style.display = "none";
+      });
+    };
+
+    const infoItems = [
+      "📍 Address: FC Road, Pune",
+      "📞 Contact: +91 8308841309",
+      "🚑 Ambulance: 108",
+      "🕒 Timings: Mon-Sat 9AM - 9PM",
+      "⚠️ Emergency: +91 112"
+    ];
+
+    let index = 0;
+    const infoText = document.getElementById("infoText");
+
+    setInterval(() => {
+      index = (index + 1) % infoItems.length;
+      infoText.style.opacity = 0;
+      setTimeout(() => {
+        infoText.textContent = infoItems[index];
+        infoText.style.opacity = 1;
+      }, 500);
+    }, 3000);
+
+    const tips = document.querySelectorAll('.tip');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, { threshold: 0.2 });
+
+    tips.forEach(tip => observer.observe(tip));
+  </script>
+
+</body>
+</html>
